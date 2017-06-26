@@ -1,0 +1,32 @@
+{
+  "name": "sql-rest",
+  "version": "1.0.0",
+  "description": "Access database using rest api's",
+  "main": "dest/index.js",
+  "scripts": {
+    "test": "gulp test",
+    "serve": "node server.js",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "sql",
+    "SQL",
+    "database",
+    "rest"
+  ],
+  "author": "sumitsharma0999@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "promise-mysql": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-add-header-comment": "^1.0.3",
+    "babel-preset-env": "^1.4.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-mocha": "^4.3.1",
+    "mocha": "^3.3.0"
+  }
+}
