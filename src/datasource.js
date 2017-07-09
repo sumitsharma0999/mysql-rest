@@ -33,9 +33,10 @@ export default class DataSource {
             var query = queryhelper.getTableNamesQuery(dbName);
             return this._connection.query(query).then( (tables) => {
                 // process result here, store in array and return the array.
-                var tableNames = [];
+                let tableNames = [];
+                let tableNameKey = 'Tables_in_' + dbName;
                 for(let table of tables) {
-                    tableNames.push(table['Tables_in_myschema']);
+                    tableNames.push(table[tableNameKey]);
                 }
                 return tableNames;
             });
