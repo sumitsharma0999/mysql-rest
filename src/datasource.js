@@ -28,9 +28,9 @@ export default class DataSource {
      * Returns a promise to give names of the tables present in the given schema
      * @returns {Promise} A Promise to give list of tables in the schema
      */
-    getTableNames(schemaName) {
+    getTableNames(dbName) {
         return this._createConnection().then(() => {
-            var query = queryhelper.getTableNamesQuery(schemaName);
+            var query = queryhelper.getTableNamesQuery(dbName);
             return this._connection.query(query).then( (tables) => {
                 // process result here, store in array and return the array.
                 var tableNames = [];
@@ -39,6 +39,25 @@ export default class DataSource {
                 }
                 return tableNames;
             });
+        });
+    }
+
+    getDbNames() {
+        return this._createConnection().then(() => {
+            let query = queryhelper.getDbNamesQuery();
+            if(this.config.database) {
+                return [this.config.database];
+            }
+            else {
+                return this._connection.query(query).then( (result) => {
+                    // process result here, store in array and return the array.
+                    var dbNames = [];
+                    for(let record of result) {
+                        dbNames.push(record.Database);
+                    }
+                    return dbNames;
+                });
+            }
         });
     }
 }

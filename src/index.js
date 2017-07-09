@@ -6,10 +6,10 @@ export function getRouter(options) {
     var router = express.Router();
     var dataSource = new DataSource(options);
 
-    router.get('/tables', function(req, res, next) {
+    router.get('/dbs', function(req, res, next) {
         // Use options to connect
-        dataSource.getTableNames(options.database).then( (tables) => {
-            res.send(tables);
+        dataSource.getDbNames(options.database).then( (dbNames) => {
+            res.send(dbNames);
         }).catch((err) => {
             res.status(500);
             res.send(err);
