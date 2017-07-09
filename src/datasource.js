@@ -42,6 +42,10 @@ export default class DataSource {
         });
     }
 
+    /**
+     * Returns a promise to give names of the databases present in the given database
+     * @returns {Promise} A Promise to give list of databases in the mysql server
+     */
     getDbNames() {
         return this._createConnection().then(() => {
             let query = queryhelper.getDbNamesQuery();
